@@ -17,3 +17,32 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// route with closure
+Route::get('/user', function () {
+    return "Get user with closure";
+});
+
+// multiple HTTP
+Route::match(['get', 'post'], '/posts', function () {
+    return "Get posts with multiple HTTP ";
+});
+Route::any('/posts', function () {
+    return "Get posts with multiple HTTP ";
+});
+
+// Route Parameters
+Route::post('/user/{id}', function ($id, Request $rq) {
+    return "Get user " . $id;
+});
+
+// route prefix
+Route::prefix('admin')->group(function () {
+    Route::get('/management-user', function () {
+        return "Management user";
+    });
+    Route::get('/crud-user', function () {
+        return "CRUD user";
+    });
+});
+// Middleware route
