@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -44,5 +45,12 @@ Route::prefix('admin')->group(function () {
     Route::get('/crud-user', function () {
         return "CRUD user";
     });
+    Route::post('/user/store/details', [UserController::class, 'storeUser']);
 });
 // Middleware route
+
+// Resource controller
+Route::resource('/users', UserController::class)->only('create', 'update', 'show', 'destroy');
+
+// Request
+Route::post('/user/store/details', [UserController::class, 'storeUser']);
