@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Http;
 
 class UserController extends Controller
 {
@@ -110,5 +112,27 @@ class UserController extends Controller
             'name',
             'value',
         );
+    }
+
+    public function collection()
+    {
+        // $collection = collect([
+        //     'usd' => 1400,
+        //     'gbp' => 1200,
+        //     'eur' => 1000,
+        // ]);
+
+        // $ratio = [
+        //     'usd' => 1,
+        //     'gbp' => 1.37,
+        //     'eur' => 1.22,
+        // ];
+
+        // return $collection->reduce(function (int $carry, int $value, int $key) use ($ratio) {
+        //     return $carry + ($value * $ratio[$key]);
+        // });
+
+        // return $data;
+        return Http::get('http://example.com/users/1')['name'];
     }
 }

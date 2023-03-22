@@ -54,3 +54,6 @@ Route::resource('/users', UserController::class)->only('create', 'update', 'show
 
 // Request
 Route::post('/user/store/details', [UserController::class, 'storeUser']);
+
+// Collection
+Route::get('/user/collection', [UserController::class, 'collection']);
